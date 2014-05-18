@@ -1,0 +1,19 @@
+CC = g++
+CFLAGS = -Wall -g -pedantic -std=gnu++11
+LDFLAGS = -lm
+
+all : main.o decoder.o
+	${CC} ${CFLAGS} main.o decoder.o -o zre_proj1_linux
+
+decoder.o : decoder.cpp
+	${CC} ${CFLAGS} -c decoder.cpp			
+
+main.o : main.cpp
+	${CC} ${CFLAGS} -c main.cpp
+
+clean:
+	rm -rf *o zre_proj1_linux
+	
+run:
+	./zre_proj1_linux cb512.txt gcb128.txt in.cod out.raw
+	
